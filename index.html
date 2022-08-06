@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>online calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat+Subrayada:wght@700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat+Subrayada:wght@700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+        <style>
+            body {
+                background-color:#fafafa;
+                margin-top:100px;
+            }
+
+            .btn-primary {
+                border-radius:30%;
+                width:70px;
+                height:70px;
+                border:none;
+                display:inline-block;
+                transition-duration: 0.2s;
+                font-family:montserrat;
+            }
+
+            .row {
+                margin-top:5px;
+            }
+
+            #reset:hover, #equals:hover, #no1:hover, #no2:hover, #no3:hover, #no4:hover, #no5:hover, #no6:hover, #no7:hover, #no8:hover, #no9:hover, #no0:hover, #plus:hover, #minus:hover, #divide:hover, #multiply:hover, #comma:hover {
+                background-color:grey;
+            }
+            
+
+            #reset, #equals {
+                background-color: #03DAC5;
+            }
+
+            #no1, #no2, #no3, #no4, #no5, #no6, #no7, #no8, #no9, #no0 {
+                background-color:#3700b3;
+                color:white;
+            }
+
+            #plus, #minus, #divide, #multiply, #comma {
+                background-color:#6200ee;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div>
+            <div class="container" style="width:305px">
+                <h1 style="font-size:23.3px; font-family: 'Montserrat sUBRAYADA';">IRSYAD'S CALCULATOR</h1>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <input type="text" id="myText" style="height:65px; width:220px; margin-left:0px; border-radius:10px; background-color:black; color:white; padding:5px 10px; font-family:montserrat;" placeholder="Result">
+                    </div>
+                    <div class="col-sm-3">
+                        <button type="button" onclick="calcReset()" class="btn btn-primary" type="reset" value="remove" id="reset">C</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <button type="button" onclick="addValue(1)" class="btn btn-primary" type="no1" value="1" id="no1">1</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button type="button" onclick="addValue(2)" class="btn btn-primary" type="no2" value="2" id="no2">2</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button type="button" onclick="addValue(3)" class="btn btn-primary" type="no3" value="3" id="no3">3</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button type="button" onclick="addValue('+')" class="btn btn-primary" type="plus" value="+" id="plus">+</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <button type="button" onclick="addValue(4)" class="btn btn-primary" type="no4" value="4" id="no4">4</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button type="button" onclick="addValue(5)" class="btn btn-primary" type="no5" value="5" id="no5">5</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button type="button" onclick="addValue(6)" class="btn btn-primary" type="no6" value="6" id="no6">6</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button type="button" onclick="addValue('-')" class="btn btn-primary" type="minus" value="-" id="minus">-</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <button type="button" onclick="addValue(7)" class="btn btn-primary" type="no7" value="7" id="no7">7</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button type="button" onclick="addValue(8)" class="btn btn-primary" type="no8" value="8" id="no8">8</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button type="button" onclick="addValue(9)" class="btn btn-primary" type="no9" value="9" id="no9">9</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button type="button" onclick="addValue('*')" class="btn btn-primary" type="multiply" value="*" id="multiply">x</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <button type="button" onclick="addValue('/')" class="btn btn-primary" type="divide" value="/" id="divide">/</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button type="button" onclick="addValue(0)" class="btn btn-primary" type="no0" value="0" id="no0">0</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button type="button" onclick="addValue('.')" class="btn btn-primary" type="comma" value="." id="comma">.</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button type="button" onclick="calcEquals()" class="btn btn-primary" type="equals" value="=" id="equals">=</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function calcReset() {
+                document.getElementById("myText").value=[];
+            }
+            function addValue(number) {
+                document.getElementById("myText").value += number;
+            }
+            
+            function calcEquals(){
+                var myValue = document.getElementById("myText").value;
+                var errTimeout = null ;
+                try {
+                    if(/[a-z]/i.test(myValue)) throw "NaN, coba lagi.";
+                    if(isNaN(myValue)) throw "Error, coba lagi.";
+                    if(myValue = '') throw "Error, coba lagi.";
+                }
+                catch(err) {
+                    document.getElementById("myText").value = err
+                    errTimeout = setTimeout(()=>{document.getElementById("myText").value =[]
+                    },2000);
+                }
+                finally {
+                    document.getElementById("myText").value = eval(myValue);
+                    clearTimeout(errTimeout);
+                }
+            }
+        </script>
+    </body>
